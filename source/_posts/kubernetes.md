@@ -4,7 +4,7 @@ date: 2026-03-29T22:49:39+08:00
 tags: 快速入门
 ---
 
-{% asset_img 1774798972048.png This is an example image %}
+{% asset_img 1774798972048.png k8s整体架构图 %}
 
 <!-- more -->
 资源对象：
