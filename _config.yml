@@ -4,12 +4,12 @@
 
 # Site
 title: JSTathamamhtaTSJ
-subtitle: ''
-description: ''
+subtitle: '夜色落幕得太执着，不哭泣眼泪却掉落'
+description: '一个懒散的coding'
 keywords:
-author: John Doe
-language: en
-timezone: ''
+author: JSTatham
+language: zh-CN
+timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
