@@ -5,7 +5,8 @@ tags: 快速入门
 ---
 <!-- more -->
 
-![1774798972048](image/kubernetes/1774798972048.png)
+{% asset_img 1774798972048.png This is an example image %}
+
 资源对象：
 node(内部ip地址)
 - pod(最小调度单元，对容器的封装)
