@@ -3,10 +3,10 @@ title: kubernetes
 date: 2026-03-29T22:49:39+08:00
 tags: 快速入门
 ---
-<!-- more -->
 
 {% asset_img 1774798972048.png This is an example image %}
 
+<!-- more -->
 资源对象：
 node(内部ip地址)
 - pod(最小调度单元，对容器的封装)
