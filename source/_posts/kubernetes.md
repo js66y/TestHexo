@@ -3,6 +3,7 @@ title: kubernetes
 date: 2026-03-29T22:49:39+08:00
 tags: 快速入门
 ---
+<!-- more -->
 资源对象：
 node(内部ip地址)
 
