@@ -798,7 +798,7 @@ note:
 tabs:
   transition:
     tabs: false
-    labels: true
+    labels: false
 
 # PDF tag
 # NexT will try to load pdf files natively, if failed, pdf.js will be used.
