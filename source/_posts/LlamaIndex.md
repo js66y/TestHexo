@@ -4,12 +4,12 @@ date: 2026-03-30T09:55:39+08:00
 tags: LlamaIndex
 ---
 
-
+LlamaIndex基础概念
+{% asset_img 1774277828825.png LlamaIndex预设agent %}
 <!-- more -->
 1. 自己实现智能体
 2. AgentWorkflow多智能体
 3. FunctionAgent作为与构建的智能体
-{% asset_img 1774277828825.png k8s整体架构图 %}
 - ctx = Context(workflow)用来存储维护状态
 - 运行工作流workflow.run(user_msg=)
 - 流式的输出for event in handler.stream_events():

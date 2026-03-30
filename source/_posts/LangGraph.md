@@ -4,6 +4,7 @@ date: 2026-03-30T09:54:25+08:00
 tags: LangGraph
 ---
 
+LangGraph基础概念
 <!-- more -->
 - LangGraph
   - state

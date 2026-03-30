@@ -4,6 +4,7 @@ date: 2026-03-30T09:57:29+08:00
 tags: pytest
 ---
 
+pytest还没学
 <!-- more -->
 pytest用例
 - pytest.raises(SystemExit)检测指定异常
