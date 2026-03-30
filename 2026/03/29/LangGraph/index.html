@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/TestHexo/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/TestHexo/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/TestHexo/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/TestHexo/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/TestHexo/css/main.css">
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"js66y.github.io","root":"/TestHexo/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeIn","post_body":"fadeIn","coll_header":"fadeIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="LangGraph基础概念">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LangGraph">
+<meta property="og:url" content="http://js66y.github.io/TestHexo/2026/03/29/LangGraph/index.html">
+<meta property="og:site_name" content="JSTathamamhtaTSJ">
+<meta property="og:description" content="LangGraph基础概念">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-29T17:54:25.000Z">
+<meta property="article:modified_time" content="2026-03-30T12:17:57.753Z">
+<meta property="article:author" content="JSTatham">
+<meta property="article:tag" content="LangGraph">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://js66y.github.io/TestHexo/2026/03/29/LangGraph/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>LangGraph | JSTathamamhtaTSJ</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/TestHexo/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">JSTathamamhtaTSJ</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">夜色落幕得太执着，不哭泣眼泪却掉落</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/TestHexo/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/TestHexo/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/TestHexo/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/TestHexo/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://js66y.github.io/TestHexo/2026/03/29/LangGraph/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/TestHexo/images/avatar.gif">
+      <meta itemprop="name" content="JSTatham">
+      <meta itemprop="description" content="一个懒散的coding">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JSTathamamhtaTSJ">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LangGraph
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2026-03-30 01:54:25 / 修改时间：20:17:57" itemprop="dateCreated datePublished" datetime="2026-03-30T01:54:25+08:00">2026-03-30</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>LangGraph基础概念</p>
+<span id="more"></span>
+<ul>
+<li>LangGraph<ul>
+<li>state<ul>
+<li>Schema[如何存]</li>
+<li>Reducers[如何修改]</li>
+</ul>
+</li>
+<li>Edges<ul>
+<li>Conditional[根据函数判断]</li>
+</ul>
+</li>
+<li>Graph API<ul>
+<li>send[根据函数内send进行路由后拼接（MapReduce）]</li>
+<li>Command[更新状态后update，跳转到特定节点goto[不同域支持graph&#x3D;Command.PARENT]]</li>
+</ul>
+</li>
+<li>高级特性<ul>
+<li>流模式<ul>
+<li>values(每个跟新输出完整),</li>
+<li>updates(只输出更新的),</li>
+<li>messages(逐token输出),</li>
+<li>custom(输出自定义write的内容),</li>
+<li>debug</li>
+</ul>
+</li>
+<li>持久化<ul>
+<li>Checkpointer(短期记忆)</li>
+<li>BaseStore(长期记忆)</li>
+</ul>
+</li>
+<li>时间回溯<ul>
+<li>get_state_history获取所有时间点</li>
+<li>update_state在某个时间点后继续执行</li>
+</ul>
+</li>
+<li>子图<ul>
+<li>将子图绑定到节点</li>
+<li>将子图放在父图的一个节点</li>
+</ul>
+</li>
+<li>多智能体<ul>
+<li>主管</li>
+<li>Handoffs</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>LangGraph<br>工作流记忆</p>
+<ul>
+<li>短期记忆state 继承的是TypedDict不是basemodel</li>
+<li>长期记忆Checkpointer,在编译图的时候设置[MemorySaver,SqliteSaver,PostgresSaver] thread_id隔离不同的记忆<br>代理记忆</li>
+<li>短期记忆invoke的config，作用域是单词调用</li>
+<li>长期记忆create_react_agent的store，作用域是全局跨thread</li>
+<li>agent中的Checkpointer,会话级的记忆</li>
+<li>create_react_agent创建代理</li>
+<li>response_format结构化输出</li>
+<li>创建流程StateGraph(State).add_node().add_edge().compile()   .stream() &#x2F; .invoke()</li>
+<li>工具调用作为节点BasicToolNode(tools&#x3D;[tool])</li>
+<li>带有判断的条件边.add_conditional_edges()</li>
+<li>人在循环中，工具中使用interrupt，这将暂停并可恢复<ul>
+<li>人在循环中其实是通过.stream传入了一个Command(resume&#x3D;)</li>
+</ul>
+</li>
+<li>.stream()中的config中添加thread_id进行记忆隔离</li>
+<li>工具函数返回一个Command对象更新state:return Command(update&#x3D;state_update)</li>
+<li>任意时刻使用graph.update_state对state的修改</li>
+<li>历史与回溯graph.get_state_history(config)这里面的checkpoint_id用于回溯<ul>
+<li>使用graph.get_state(config)获取指定checkpoint的检查点</li>
+</ul>
+</li>
+<li>invoke 可设置最大迭代次数，stream有异步的astream，不同的传输形式stream_mode&#x3D;[“updates”, “messages”, “custom”]</li>
+<li>工具中使用args_schema&#x3D;BaseModel定义输入数据格式</li>
+<li>model &#x3D; model.bind_tools(tools)告知模型函数的信息</li>
+<li>state记忆的管理，在create_react_agent的时候添加summarization_node或者trim_messages</li>
+<li>多agent组织方式[主管，群组，移交]</li>
+<li>编排器Send 对象通常必须配合 add_conditional_edges 使用。Send的使用类似于mapreduce</li>
+<li>评估器llm.with_structured_output(Feedback)工具调用节点搭配动态路由实现校验BaseModel格式校验</li>
+<li>同样有与构建的agent create_react_agent</li>
+<li>Annotated对state进行规约,在第二个参数中添加Reducer，将按照Reducer进行数据的更新</li>
+<li>不使用添加边的方式添加执行顺序.add_sequence([step_1, step_2, step_3])</li>
+<li>在节点还可以做的事情：运行时配置，节点缓存，延迟执行</li>
+<li>流式输出的各种模式stream_mode&#x3D;[“updates”, “custom”]</li>
+</ul>
+<p>高级内容</p>
+<ul>
+<li>检查点：从检查点恢复</li>
+<li>人在回路中：批准拒绝，审查编辑，验证输入</li>
+<li>记忆：编辑消息，总结消息，移除消息</li>
+<li>记忆类型：语义记忆，场景记忆，程序记忆</li>
+</ul>
+<p>mcp服务定义from mcp.server.fastmcp import FastMCP</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/TestHexo/tags/LangGraph/" rel="tag"># LangGraph</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/TestHexo/2026/03/29/fastapi/" rel="prev" title="fastapi">
+      <i class="fa fa-chevron-left"></i> fastapi
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/TestHexo/2026/03/29/LlamaIndex/" rel="next" title="LlamaIndex">
+      LlamaIndex <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JSTatham</p>
+  <div class="site-description" itemprop="description">一个懒散的coding</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/TestHexo/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/TestHexo/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/js66y" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;js66y" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/TestHexo/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JSTatham</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+
+<script src="/TestHexo/js/utils.js"></script>
+
+
+<script src="/TestHexo/js/schemes/pisces.js"></script>
+
+
+<script src="/TestHexo/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/TestHexo/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

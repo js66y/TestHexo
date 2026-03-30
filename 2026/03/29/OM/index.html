@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/TestHexo/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/TestHexo/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/TestHexo/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/TestHexo/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/TestHexo/css/main.css">
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"js66y.github.io","root":"/TestHexo/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeIn","post_body":"fadeIn","coll_header":"fadeIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="接下来运维很有用…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OM">
+<meta property="og:url" content="http://js66y.github.io/TestHexo/2026/03/29/OM/index.html">
+<meta property="og:site_name" content="JSTathamamhtaTSJ">
+<meta property="og:description" content="接下来运维很有用…">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-29T18:10:15.000Z">
+<meta property="article:modified_time" content="2026-03-30T12:17:57.753Z">
+<meta property="article:author" content="JSTatham">
+<meta property="article:tag" content="运维something">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://js66y.github.io/TestHexo/2026/03/29/OM/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>OM | JSTathamamhtaTSJ</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/TestHexo/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">JSTathamamhtaTSJ</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">夜色落幕得太执着，不哭泣眼泪却掉落</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/TestHexo/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/TestHexo/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/TestHexo/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/TestHexo/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://js66y.github.io/TestHexo/2026/03/29/OM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/TestHexo/images/avatar.gif">
+      <meta itemprop="name" content="JSTatham">
+      <meta itemprop="description" content="一个懒散的coding">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JSTathamamhtaTSJ">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          OM
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2026-03-30 02:10:15 / 修改时间：20:17:57" itemprop="dateCreated datePublished" datetime="2026-03-30T02:10:15+08:00">2026-03-30</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>接下来运维很有用…</p>
+<span id="more"></span>
+<h1 id="linux命令"><a href="#linux命令" class="headerlink" title="linux命令"></a>linux命令</h1><h4 id="助信息"><a href="#助信息" class="headerlink" title="助信息"></a>助信息</h4><ul>
+<li>man ls(查看ls手册)</li>
+<li>help ls(查看内置命令帮助信息)</li>
+<li>whatis grep(单行简要描述)</li>
+<li>whereis python(定位命令的二进制文件、源代码和手册页的位置)</li>
+<li>which ls(被执行的那个命令的绝对路径)</li>
+<li>info tar(超文本格式文档)</li>
+</ul>
+<h4 id="目录管理"><a href="#目录管理" class="headerlink" title="目录管理"></a>目录管理</h4><ul>
+<li>pwd,cd,ls,tree</li>
+<li>mkdir,touch,rmdir(删除空目录),rm</li>
+<li>ln(链接),rename,mv,cp</li>
+<li>stat(文件详细信息),file(识别文件真实类型),chmod,chown(修改文件的组)</li>
+<li>locate(数据库快速找文件),find(实时遍历目录查找文件)</li>
+</ul>
+<h4 id="内容查看"><a href="#内容查看" class="headerlink" title="内容查看"></a>内容查看</h4><ul>
+<li>cat,head,tail(尾部),more,less</li>
+<li>grep(文本查找)</li>
+<li>sed(非交互式修改文件内容),vi,vim,nano</li>
+</ul>
+<h4 id="压缩解压"><a href="#压缩解压" class="headerlink" title="压缩解压"></a>压缩解压</h4><ul>
+<li>tar, gzip, zip, unzip</li>
+</ul>
+<h4 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h4><ul>
+<li>groupadd, groupdel, groupmod, useradd, userdel, usermod, passwd, su, sudo</li>
+</ul>
+<h4 id="系统管理"><a href="#系统管理" class="headerlink" title="系统管理"></a>系统管理</h4><ul>
+<li>reboot, exit, shutdown, date, mount, umount, ps, kill, systemctl, service, crontab(周期性执行任务)</li>
+</ul>
+<h4 id="Linux-网络管理"><a href="#Linux-网络管理" class="headerlink" title="Linux 网络管理"></a>Linux 网络管理</h4><ul>
+<li>(curl, wget), (telnet旧版ssh, ip新版ifconfig和route, hostname, ifconfig, route), (ssh, ssh-keygen), (firewalld, iptables), (host, nslookup域名信息), (nc&#x2F;netcat设置路由), ping, (traceroute追踪数据), (netstat端口信息)</li>
+</ul>
+<h4 id="Linux-硬件管理"><a href="#Linux-硬件管理" class="headerlink" title="Linux 硬件管理"></a>Linux 硬件管理</h4><ul>
+<li>df(查看磁盘空间),du(文件或目录的磁盘空间),top(系统整体运行状态),free(内存),iotop(I&#x2F;O使用状况)</li>
+</ul>
+<h4 id="Linux-软件管理"><a href="#Linux-软件管理" class="headerlink" title="Linux 软件管理"></a>Linux 软件管理</h4><ul>
+<li>rpm, yum, apt-get</li>
+</ul>
+<h1 id="linux自动化脚本"><a href="#linux自动化脚本" class="headerlink" title="linux自动化脚本"></a>linux自动化脚本</h1><ul>
+<li>&#x2F;etc&#x2F;rc.local(添加脚本)</li>
+<li>&#x2F;etc&#x2F;rc.d&#x2F;init.d(对应启动级别的放置脚本)</li>
+</ul>
+<h1 id="Samba应用"><a href="#Samba应用" class="headerlink" title="Samba应用"></a>Samba应用</h1><ul>
+<li>安装配置samba</li>
+<li>用于实现linux和windows的文件共享</li>
+<li>linux真实存在的用户，为其添加smb的密码</li>
+<li>启动服务，添加防火墙规则</li>
+</ul>
+<h1 id="NTP应用-OSI-应用层"><a href="#NTP应用-OSI-应用层" class="headerlink" title="NTP应用(OSI 应用层)"></a>NTP应用(OSI 应用层)</h1><ul>
+<li>网络时间协议，协议使用udp123</li>
+</ul>
+<h1 id="Firewalld防火墙"><a href="#Firewalld防火墙" class="headerlink" title="Firewalld防火墙"></a>Firewalld防火墙</h1><ul>
+<li>iptables防火墙设置<code>iptables -A INPUT -p UDP -i eth0 -s 192.168.0.0/24 --dport 123 -j ACCEPT</code></li>
+<li>firewalld防火墙设置<code>firewall-cmd --zone=public --add-port=123 /udp --permanent</code></li>
+</ul>
+<h1 id="crontab定时任务"><a href="#crontab定时任务" class="headerlink" title="crontab定时任务"></a>crontab定时任务</h1><ul>
+<li>&#x2F;etc&#x2F;crontab文件存放定时任务</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Example of job definition:</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">.---------------- minute (0 - 59)</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">|  .------------- hour (0 - 23)</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">|  |  .---------- day of month (1 - 31)</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">|  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">|  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">|  |  |  |  |</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">*  *  *  *  * user-name  <span class="built_in">command</span> to be executed</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">每两个小时以root身份执行 /home/hello.sh 脚本</span></span><br><span class="line">0 */2 * * * root /home/hello.sh</span><br></pre></td></tr></table></figure>
+
+<h1 id="Systemd应用"><a href="#Systemd应用" class="headerlink" title="Systemd应用"></a>Systemd应用</h1><ul>
+<li>Systemd系统守护进程pid为1</li>
+<li>systemctl(管理系统)</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重启系统</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> systemctl reboot</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">关闭系统，切断电源</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> systemctl poweroff</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">CPU停止工作</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> systemctl halt</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">暂停系统</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> systemctl <span class="built_in">suspend</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">让系统进入冬眠状态</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> systemctl hibernate</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">让系统进入交互式休眠状态</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> systemctl hybrid-sleep</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动进入救援状态（单用户状态）</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> systemctl rescue</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Systemd 可以管理所有系统资源。不同的资源统称为12个Unit（单位）。</li>
+<li>Systemd 默认从目录&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;读取配置文件 启动Unit</li>
+<li>Target 就是一个 Unit 组</li>
+<li>journalctl 统一管理内核和应用日志</li>
+</ul>
+<h1 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h1><ul>
+<li>命令模式(命令模式、插入模式、底线命令模式)</li>
+</ul>
+<h1 id="Iptables应用"><a href="#Iptables应用" class="headerlink" title="Iptables应用"></a>Iptables应用</h1><ul>
+<li>可以检测、修改、转发、重定向和丢弃 IPv4 数据包</li>
+</ul>
+<h1 id="oh-my-zsh-应用"><a href="#oh-my-zsh-应用" class="headerlink" title="oh-my-zsh 应用"></a>oh-my-zsh 应用</h1><h1 id="Nexus"><a href="#Nexus" class="headerlink" title="Nexus"></a>Nexus</h1><ul>
+<li>Maven 仓库管理器用于搭建私服</li>
+</ul>
+<h1 id="Gitlab"><a href="#Gitlab" class="headerlink" title="Gitlab"></a>Gitlab</h1><ul>
+<li>自托管的 Git 代码托管平台</li>
+</ul>
+<h1 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h1><ul>
+<li>CI&#x2F;CD持续集成，持续交付工具</li>
+</ul>
+<h1 id="Svn"><a href="#Svn" class="headerlink" title="Svn"></a>Svn</h1><ul>
+<li>类似git</li>
+</ul>
+<h1 id="YApi"><a href="#YApi" class="headerlink" title="YApi"></a>YApi</h1><ul>
+<li>API接口管理</li>
+</ul>
+<h1 id="Elastic-技术栈"><a href="#Elastic-技术栈" class="headerlink" title="Elastic 技术栈"></a>Elastic 技术栈</h1><ul>
+<li>ElasticSearch (opens new window)是一个基于 Lucene (opens new window)构建的开源，分布式，RESTful 搜索引擎。</li>
+<li>Logstash (opens new window)传输和处理你的日志、事务或其他数据。</li>
+<li>Kibana(opens new window)将 Elasticsearch 的数据分析并渲染为可视化的报表。</li>
+</ul>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">以上是 ELK 技术栈的一个架构图。从图中可以清楚的看到数据流向。</span><br><span class="line">Beats(opens new window)是单一用途的数据传输平台，它可以将多台机器的数据发送到 Logstash 或 ElasticSearch。但 Beats 并不是不可或缺的一环，所以本文中暂不介绍。</span><br><span class="line">Logstash(opens new window)是一个动态数据收集管道。支持以 TCP/UDP/HTTP 多种方式收集数据（也可以接受 Beats 传输来的数据），并对数据做进一步丰富或提取字段处理。</span><br><span class="line">ElasticSearch(opens new window)是一个基于 JSON 的分布式的搜索和分析引擎。作为 ELK 的核心，它集中存储数据。</span><br><span class="line">Kibana(opens new window)是 ELK 的用户界面。它将收集的数据进行可视化展示（各种报表、图形化数据），并提供配置、管理 ELK 的界面。</span><br></pre></td></tr></table></figure>
+
+<h1 id="RocketMQ"><a href="#RocketMQ" class="headerlink" title="RocketMQ"></a>RocketMQ</h1><ul>
+<li>MQ消息队列类似kafka</li>
+</ul>
+<h1 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a>Nacos</h1><ul>
+<li>发现、配置和管理微服务的软件(注册中心，配置中心)</li>
+</ul>
+<h1 id="概念介绍"><a href="#概念介绍" class="headerlink" title="概念介绍"></a>概念介绍</h1><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1oCwEeVEe4/?spm_id_from=333.788.videopod.sections&vd_source=4878313de5c2fd6a940f45e90798e004">https://www.bilibili.com/video/BV1oCwEeVEe4/?spm_id_from=333.788.videopod.sections&amp;vd_source=4878313de5c2fd6a940f45e90798e004</a></p>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><p>远程缓存服务(单线程多个sock),加入异步子进程将其持久化到.rdb，传输使用tcp协议。主从模式：主负责读写，从负责读。Keepalived粗糙检测Redis是否存活选择新的主节点。或者使用哨兵节点Sentinel或哨兵集群；哈希槽切分数据；重定向不同的哈希槽信息</p>
+<h2 id="sendfile与mmap-RocketMQ与kafka性能区别"><a href="#sendfile与mmap-RocketMQ与kafka性能区别" class="headerlink" title="sendfile与mmap[RocketMQ与kafka性能区别]"></a>sendfile与mmap[RocketMQ与kafka性能区别]</h2><p>正常的发送过程：磁盘到内核到用户到内核socket缓冲区到网卡[read, write]；mmap：磁盘到内核到内核socket缓冲区到网卡，用户空间直接映射的内核缓冲区[mmap, write]；sendfile:从磁盘到内核到网卡[ sendfile ]</p>
+<h2 id="Elastic-Search"><a href="#Elastic-Search" class="headerlink" title="Elastic Search"></a>Elastic Search</h2><p>Lucene:{将文本拆分为词项，然后存储包含此词项[ term dictiongry ]的文本索引[ Posting list ]，具体文本保存在[ Stored Fields ]，通过二分查找和树的查找进行优化。Doc Values[ 用于存储特定的索引 ]。segment:[ Inverted Index, Term Index, Stored Fields, Doc Values ]一但生成则不能修改，不定期合并小的segment,读的时候并行的读多个}。根据内容分类设置多个Lucene通过Shard进行区分，内部拆分成多个Shard(独立Lucene库)Shard的优化生成副Shard。涉及到管理的不同节点[ 集群管理， 存储数据,处理请求 ]。使用Raft(一致性算法)进行通信</p>
+<h2 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h2><p>将q分类成不同的topic,一个topic被拆分成几个Partition，partition被放置到broker上，一个broker中可以有多个partition。为了高可用将partition进行备份，主负责业务，从负责备份。为了持久化将信息保存到磁盘并添加retention policy数据保留策略。为了让消费者从partition中间进行处理对消费者进行分组分别维护自己的消费进度并设置offset定位。使用zookeeper(分布式协调服务)维护集群，后面支持使用Raft</p>
+<h2 id="RocketMQ-1"><a href="#RocketMQ-1" class="headerlink" title="RocketMQ"></a>RocketMQ</h2><p>将Kafka中的zookeeper替换为Nameserver，RocketMQ的Q只存储摘要信息，具体信息保存到commitLog，修改以Broker为单位进行备份。通过tag标记Q中的消息。原始支持延时队列，原始支持死信队列(重试多次失败)。除了支持offset还支持调整时间</p>
+<h2 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ:"></a>RabbitMQ:</h2><p>是一个消息队列，使用不同的优先级，Exchange进行路由，支持集群，Exchange进行同步，Queue进行镜像拷贝(具备主从关系)，基于Erlang进行的数据同步，更靠谱的Raft算法进行选举主Queue</p>
+<h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><p>只是保存操作系统的用户空间和文件系统以及依赖库。<br>Docker Compose解决的是一整套服务，Docker Swarm解决的是一整套服务在多个服务器上的部署。VPS(服务器上的虚拟机，不能随时调整资源)ECS是可以动态调整的版本</p>
+<h2 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h2><p>切分，容错。NameNode[ Namespace文件树,Block Mgr具体文件块 ],DataNode。NameNode的持久化和备份</p>
+<h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><p>正向代理(代理浏览器)，反向代理(代理客户端)，网关开放的接口(单线程)而是使用多进程，并且设置一个共享内存，磁盘缓存相应数据。work进行滚动升级使用master进行管理配置</p>
+<h2 id="hadoop"><a href="#hadoop" class="headerlink" title="hadoop"></a>hadoop</h2><p>hdfs存储,mapreduce计算,yarn资源管理(将map封装成jvm容器)，Hive查询，spark使用内存进行加速mapreduce，Flink在线的数据处理，高并发hbase分布式数据库</p>
+<h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><p>存储格式.idb,并将一个表进行分页，通过将每页的第一个主键收集成层级快速查找【并由一个更多策略的buffer pool替代文件缓存】，自适应哈希索引优化热点读性能，change_buffer:辅助索引页先进pool后面再机会的使用磁盘的索引页，Undo_log负责记录写操作，Redo_log_Buffer WAL:对于原子性的操作单独顺序记录到磁盘防止进程崩溃，这些buffer使用Innodb数据引擎管理通过server层提供sql语句支持，server层包括连接管理sql分析规则优化</p>
+<h2 id="mysql的速度优化"><a href="#mysql的速度优化" class="headerlink" title="mysql的速度优化"></a>mysql的速度优化</h2><p>使用更大的连接池，增大Buffer Pool</p>
+<h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h2><p>Document替换列，id替换主键。.wt文件；写时复制[ 单独创建节点写然后替换原来的节点 ]  “没看完”</p>
+<h2 id="PostgreSQL"><a href="#PostgreSQL" class="headerlink" title="PostgreSQL"></a>PostgreSQL</h2><p>支持各种各样的索引的扩展[ B-Link(数字文本),GIN(文本|Json),地理位置(GIST),时序数据(BRIN) ]  “没看完”</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/TestHexo/tags/%E8%BF%90%E7%BB%B4something/" rel="tag"># 运维something</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/TestHexo/2026/03/29/qwen3_int4_gptq/" rel="prev" title="qwen3_int4_gptq">
+      <i class="fa fa-chevron-left"></i> qwen3_int4_gptq
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/TestHexo/2026/03/30/hello-world/" rel="next" title="求个OC">
+      求个OC <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">linux命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A9%E4%BF%A1%E6%81%AF"><span class="nav-number">1.1.</span> <span class="nav-text">助信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">目录管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AE%B9%E6%9F%A5%E7%9C%8B"><span class="nav-number">1.3.</span> <span class="nav-text">内容查看</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8E%8B"><span class="nav-number">1.4.</span> <span class="nav-text">压缩解压</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="nav-number">1.5.</span> <span class="nav-text">用户管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86"><span class="nav-number">1.6.</span> <span class="nav-text">系统管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux-%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86"><span class="nav-number">1.7.</span> <span class="nav-text">Linux 网络管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux-%E7%A1%AC%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="nav-number">1.8.</span> <span class="nav-text">Linux 硬件管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux-%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="nav-number">1.9.</span> <span class="nav-text">Linux 软件管理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC"><span class="nav-number">2.</span> <span class="nav-text">linux自动化脚本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Samba%E5%BA%94%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">Samba应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NTP%E5%BA%94%E7%94%A8-OSI-%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-number">4.</span> <span class="nav-text">NTP应用(OSI 应用层)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Firewalld%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-number">5.</span> <span class="nav-text">Firewalld防火墙</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#crontab%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1"><span class="nav-number">6.</span> <span class="nav-text">crontab定时任务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Systemd%E5%BA%94%E7%94%A8"><span class="nav-number">7.</span> <span class="nav-text">Systemd应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vim"><span class="nav-number">8.</span> <span class="nav-text">Vim</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Iptables%E5%BA%94%E7%94%A8"><span class="nav-number">9.</span> <span class="nav-text">Iptables应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#oh-my-zsh-%E5%BA%94%E7%94%A8"><span class="nav-number">10.</span> <span class="nav-text">oh-my-zsh 应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nexus"><span class="nav-number">11.</span> <span class="nav-text">Nexus</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Gitlab"><span class="nav-number">12.</span> <span class="nav-text">Gitlab</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Jenkins"><span class="nav-number">13.</span> <span class="nav-text">Jenkins</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Svn"><span class="nav-number">14.</span> <span class="nav-text">Svn</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#YApi"><span class="nav-number">15.</span> <span class="nav-text">YApi</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Elastic-%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-number">16.</span> <span class="nav-text">Elastic 技术栈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RocketMQ"><span class="nav-number">17.</span> <span class="nav-text">RocketMQ</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nacos"><span class="nav-number">18.</span> <span class="nav-text">Nacos</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D"><span class="nav-number">19.</span> <span class="nav-text">概念介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis"><span class="nav-number">19.1.</span> <span class="nav-text">Redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sendfile%E4%B8%8Emmap-RocketMQ%E4%B8%8Ekafka%E6%80%A7%E8%83%BD%E5%8C%BA%E5%88%AB"><span class="nav-number">19.2.</span> <span class="nav-text">sendfile与mmap[RocketMQ与kafka性能区别]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Elastic-Search"><span class="nav-number">19.3.</span> <span class="nav-text">Elastic Search</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kafka"><span class="nav-number">19.4.</span> <span class="nav-text">Kafka</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RocketMQ-1"><span class="nav-number">19.5.</span> <span class="nav-text">RocketMQ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RabbitMQ"><span class="nav-number">19.6.</span> <span class="nav-text">RabbitMQ:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker"><span class="nav-number">19.7.</span> <span class="nav-text">Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HDFS"><span class="nav-number">19.8.</span> <span class="nav-text">HDFS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx"><span class="nav-number">19.9.</span> <span class="nav-text">Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hadoop"><span class="nav-number">19.10.</span> <span class="nav-text">hadoop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql"><span class="nav-number">19.11.</span> <span class="nav-text">mysql</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql%E7%9A%84%E9%80%9F%E5%BA%A6%E4%BC%98%E5%8C%96"><span class="nav-number">19.12.</span> <span class="nav-text">mysql的速度优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB"><span class="nav-number">19.13.</span> <span class="nav-text">MongoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PostgreSQL"><span class="nav-number">19.14.</span> <span class="nav-text">PostgreSQL</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JSTatham</p>
+  <div class="site-description" itemprop="description">一个懒散的coding</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/TestHexo/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/TestHexo/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/js66y" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;js66y" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/TestHexo/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JSTatham</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+
+<script src="/TestHexo/js/utils.js"></script>
+
+
+<script src="/TestHexo/js/schemes/pisces.js"></script>
+
+
+<script src="/TestHexo/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/TestHexo/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

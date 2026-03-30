@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>LangGraph</title>
+    <url>/TestHexo/2026/03/29/LangGraph/</url>
+    <content><![CDATA[<p>LangGraph基础概念</p>
+<span id="more"></span>
+<ul>
+<li>LangGraph<ul>
+<li>state<ul>
+<li>Schema[如何存]</li>
+<li>Reducers[如何修改]</li>
+</ul>
+</li>
+<li>Edges<ul>
+<li>Conditional[根据函数判断]</li>
+</ul>
+</li>
+<li>Graph API<ul>
+<li>send[根据函数内send进行路由后拼接（MapReduce）]</li>
+<li>Command[更新状态后update，跳转到特定节点goto[不同域支持graph&#x3D;Command.PARENT]]</li>
+</ul>
+</li>
+<li>高级特性<ul>
+<li>流模式<ul>
+<li>values(每个跟新输出完整),</li>
+<li>updates(只输出更新的),</li>
+<li>messages(逐token输出),</li>
+<li>custom(输出自定义write的内容),</li>
+<li>debug</li>
+</ul>
+</li>
+<li>持久化<ul>
+<li>Checkpointer(短期记忆)</li>
+<li>BaseStore(长期记忆)</li>
+</ul>
+</li>
+<li>时间回溯<ul>
+<li>get_state_history获取所有时间点</li>
+<li>update_state在某个时间点后继续执行</li>
+</ul>
+</li>
+<li>子图<ul>
+<li>将子图绑定到节点</li>
+<li>将子图放在父图的一个节点</li>
+</ul>
+</li>
+<li>多智能体<ul>
+<li>主管</li>
+<li>Handoffs</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>LangGraph<br>工作流记忆</p>
+<ul>
+<li>短期记忆state 继承的是TypedDict不是basemodel</li>
+<li>长期记忆Checkpointer,在编译图的时候设置[MemorySaver,SqliteSaver,PostgresSaver] thread_id隔离不同的记忆<br>代理记忆</li>
+<li>短期记忆invoke的config，作用域是单词调用</li>
+<li>长期记忆create_react_agent的store，作用域是全局跨thread</li>
+<li>agent中的Checkpointer,会话级的记忆</li>
+<li>create_react_agent创建代理</li>
+<li>response_format结构化输出</li>
+<li>创建流程StateGraph(State).add_node().add_edge().compile()   .stream() &#x2F; .invoke()</li>
+<li>工具调用作为节点BasicToolNode(tools&#x3D;[tool])</li>
+<li>带有判断的条件边.add_conditional_edges()</li>
+<li>人在循环中，工具中使用interrupt，这将暂停并可恢复<ul>
+<li>人在循环中其实是通过.stream传入了一个Command(resume&#x3D;)</li>
+</ul>
+</li>
+<li>.stream()中的config中添加thread_id进行记忆隔离</li>
+<li>工具函数返回一个Command对象更新state:return Command(update&#x3D;state_update)</li>
+<li>任意时刻使用graph.update_state对state的修改</li>
+<li>历史与回溯graph.get_state_history(config)这里面的checkpoint_id用于回溯<ul>
+<li>使用graph.get_state(config)获取指定checkpoint的检查点</li>
+</ul>
+</li>
+<li>invoke 可设置最大迭代次数，stream有异步的astream，不同的传输形式stream_mode&#x3D;[“updates”, “messages”, “custom”]</li>
+<li>工具中使用args_schema&#x3D;BaseModel定义输入数据格式</li>
+<li>model &#x3D; model.bind_tools(tools)告知模型函数的信息</li>
+<li>state记忆的管理，在create_react_agent的时候添加summarization_node或者trim_messages</li>
+<li>多agent组织方式[主管，群组，移交]</li>
+<li>编排器Send 对象通常必须配合 add_conditional_edges 使用。Send的使用类似于mapreduce</li>
+<li>评估器llm.with_structured_output(Feedback)工具调用节点搭配动态路由实现校验BaseModel格式校验</li>
+<li>同样有与构建的agent create_react_agent</li>
+<li>Annotated对state进行规约,在第二个参数中添加Reducer，将按照Reducer进行数据的更新</li>
+<li>不使用添加边的方式添加执行顺序.add_sequence([step_1, step_2, step_3])</li>
+<li>在节点还可以做的事情：运行时配置，节点缓存，延迟执行</li>
+<li>流式输出的各种模式stream_mode&#x3D;[“updates”, “custom”]</li>
+</ul>
+<p>高级内容</p>
+<ul>
+<li>检查点：从检查点恢复</li>
+<li>人在回路中：批准拒绝，审查编辑，验证输入</li>
+<li>记忆：编辑消息，总结消息，移除消息</li>
+<li>记忆类型：语义记忆，场景记忆，程序记忆</li>
+</ul>
+<p>mcp服务定义from mcp.server.fastmcp import FastMCP</p>
+]]></content>
+      <tags>
+        <tag>LangGraph</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LlamaIndex</title>
+    <url>/TestHexo/2026/03/29/LlamaIndex/</url>
+    <content><![CDATA[<p>LlamaIndex基础概念</p>
+<img data-src="/TestHexo/2026/03/29/LlamaIndex/1774277828825.png" class="" title="LlamaIndex预设agent">
+<span id="more"></span>
+<ol>
+<li>自己实现智能体</li>
+<li>AgentWorkflow多智能体</li>
+<li>FunctionAgent作为与构建的智能体</li>
+</ol>
+<ul>
+<li>ctx &#x3D; Context(workflow)用来存储维护状态</li>
+<li>运行工作流workflow.run(user_msg&#x3D;)</li>
+<li>流式的输出for event in handler.stream_events():</li>
+<li>在工具中使用ctx.wait_for_event()类定义HumanResponseEvent来进行人在回路中</li>
+<li>AgentWorkflow默认使用移交的形式进行多智能体协作</li>
+</ul>
+<p>自定义工作流</p>
+<ul>
+<li>class MyWorkflow(Workflow):@step定义需要指定输入输出状态[继承Event]和step步骤</li>
+<li>通过输出的类型判断走哪个下一步</li>
+<li>并发的节点ctx.collect_events(ev,[节点列表])</li>
+<li>通过继承工作流可以添加新的运行节点和边</li>
+<li>工作流中可以嵌套使用工作流或者使用工作流解绑@step(workflow&#x3D;TestWorkflow)添加节点和边</li>
+<li>数据读取器SimpleDirectoryReader 读取一个 Document对象</li>
+<li>VectorStoreIndex.from_documents(documents, transformations&#x3D;)将Doc转换成Node对象<ul>
+<li>pipeline &#x3D; IngestionPipeline(transformations&#x3D;[TokenTextSplitter(), …])</li>
+<li>nodes &#x3D; pipeline.run(documents&#x3D;documents)</li>
+</ul>
+</li>
+<li>向量索引index &#x3D; VectorStoreIndex(nodes)</li>
+<li>.persist索引写入磁盘，load_index_from_storage索引导出磁盘<ul>
+<li>使用向量数据库存储Chroma</li>
+</ul>
+<ol>
+<li>初始化 Chroma 客户端</li>
+<li>在 Chroma 中创建一个 Collection 来存储您的数据</li>
+<li>在 StorageContext 中将 Chroma 指定为 vector_store</li>
+<li>使用该 StorageContext 初始化您的 VectorStoreIndex</li>
+</ol>
+</li>
+<li>查询阶段index.as_query_engine().query()[自定义的相似度额值和topk]</li>
+<li>结构化llm，使用baseModel来限制输出的格式<ul>
+<li>也可以使用llm.structured_predict()来运行结构化限制</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>LlamaIndex</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OM</title>
+    <url>/TestHexo/2026/03/29/OM/</url>
+    <content><![CDATA[<p>接下来运维很有用…</p>
+<span id="more"></span>
+<h1 id="linux命令"><a href="#linux命令" class="headerlink" title="linux命令"></a>linux命令</h1><h4 id="助信息"><a href="#助信息" class="headerlink" title="助信息"></a>助信息</h4><ul>
+<li>man ls(查看ls手册)</li>
+<li>help ls(查看内置命令帮助信息)</li>
+<li>whatis grep(单行简要描述)</li>
+<li>whereis python(定位命令的二进制文件、源代码和手册页的位置)</li>
+<li>which ls(被执行的那个命令的绝对路径)</li>
+<li>info tar(超文本格式文档)</li>
+</ul>
+<h4 id="目录管理"><a href="#目录管理" class="headerlink" title="目录管理"></a>目录管理</h4><ul>
+<li>pwd,cd,ls,tree</li>
+<li>mkdir,touch,rmdir(删除空目录),rm</li>
+<li>ln(链接),rename,mv,cp</li>
+<li>stat(文件详细信息),file(识别文件真实类型),chmod,chown(修改文件的组)</li>
+<li>locate(数据库快速找文件),find(实时遍历目录查找文件)</li>
+</ul>
+<h4 id="内容查看"><a href="#内容查看" class="headerlink" title="内容查看"></a>内容查看</h4><ul>
+<li>cat,head,tail(尾部),more,less</li>
+<li>grep(文本查找)</li>
+<li>sed(非交互式修改文件内容),vi,vim,nano</li>
+</ul>
+<h4 id="压缩解压"><a href="#压缩解压" class="headerlink" title="压缩解压"></a>压缩解压</h4><ul>
+<li>tar, gzip, zip, unzip</li>
+</ul>
+<h4 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h4><ul>
+<li>groupadd, groupdel, groupmod, useradd, userdel, usermod, passwd, su, sudo</li>
+</ul>
+<h4 id="系统管理"><a href="#系统管理" class="headerlink" title="系统管理"></a>系统管理</h4><ul>
+<li>reboot, exit, shutdown, date, mount, umount, ps, kill, systemctl, service, crontab(周期性执行任务)</li>
+</ul>
+<h4 id="Linux-网络管理"><a href="#Linux-网络管理" class="headerlink" title="Linux 网络管理"></a>Linux 网络管理</h4><ul>
+<li>(curl, wget), (telnet旧版ssh, ip新版ifconfig和route, hostname, ifconfig, route), (ssh, ssh-keygen), (firewalld, iptables), (host, nslookup域名信息), (nc&#x2F;netcat设置路由), ping, (traceroute追踪数据), (netstat端口信息)</li>
+</ul>
+<h4 id="Linux-硬件管理"><a href="#Linux-硬件管理" class="headerlink" title="Linux 硬件管理"></a>Linux 硬件管理</h4><ul>
+<li>df(查看磁盘空间),du(文件或目录的磁盘空间),top(系统整体运行状态),free(内存),iotop(I&#x2F;O使用状况)</li>
+</ul>
+<h4 id="Linux-软件管理"><a href="#Linux-软件管理" class="headerlink" title="Linux 软件管理"></a>Linux 软件管理</h4><ul>
+<li>rpm, yum, apt-get</li>
+</ul>
+<h1 id="linux自动化脚本"><a href="#linux自动化脚本" class="headerlink" title="linux自动化脚本"></a>linux自动化脚本</h1><ul>
+<li>&#x2F;etc&#x2F;rc.local(添加脚本)</li>
+<li>&#x2F;etc&#x2F;rc.d&#x2F;init.d(对应启动级别的放置脚本)</li>
+</ul>
+<h1 id="Samba应用"><a href="#Samba应用" class="headerlink" title="Samba应用"></a>Samba应用</h1><ul>
+<li>安装配置samba</li>
+<li>用于实现linux和windows的文件共享</li>
+<li>linux真实存在的用户，为其添加smb的密码</li>
+<li>启动服务，添加防火墙规则</li>
+</ul>
+<h1 id="NTP应用-OSI-应用层"><a href="#NTP应用-OSI-应用层" class="headerlink" title="NTP应用(OSI 应用层)"></a>NTP应用(OSI 应用层)</h1><ul>
+<li>网络时间协议，协议使用udp123</li>
+</ul>
+<h1 id="Firewalld防火墙"><a href="#Firewalld防火墙" class="headerlink" title="Firewalld防火墙"></a>Firewalld防火墙</h1><ul>
+<li>iptables防火墙设置<code>iptables -A INPUT -p UDP -i eth0 -s 192.168.0.0/24 --dport 123 -j ACCEPT</code></li>
+<li>firewalld防火墙设置<code>firewall-cmd --zone=public --add-port=123 /udp --permanent</code></li>
+</ul>
+<h1 id="crontab定时任务"><a href="#crontab定时任务" class="headerlink" title="crontab定时任务"></a>crontab定时任务</h1><ul>
+<li>&#x2F;etc&#x2F;crontab文件存放定时任务</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Example of job definition:</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">.---------------- minute (0 - 59)</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">|  .------------- hour (0 - 23)</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">|  |  .---------- day of month (1 - 31)</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">|  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">|  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">|  |  |  |  |</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">*  *  *  *  * user-name  <span class="built_in">command</span> to be executed</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">每两个小时以root身份执行 /home/hello.sh 脚本</span></span><br><span class="line">0 */2 * * * root /home/hello.sh</span><br></pre></td></tr></table></figure>
+
+<h1 id="Systemd应用"><a href="#Systemd应用" class="headerlink" title="Systemd应用"></a>Systemd应用</h1><ul>
+<li>Systemd系统守护进程pid为1</li>
+<li>systemctl(管理系统)</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重启系统</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> systemctl reboot</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">关闭系统，切断电源</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> systemctl poweroff</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">CPU停止工作</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> systemctl halt</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">暂停系统</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> systemctl <span class="built_in">suspend</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">让系统进入冬眠状态</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> systemctl hibernate</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">让系统进入交互式休眠状态</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> systemctl hybrid-sleep</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动进入救援状态（单用户状态）</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> systemctl rescue</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Systemd 可以管理所有系统资源。不同的资源统称为12个Unit（单位）。</li>
+<li>Systemd 默认从目录&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;读取配置文件 启动Unit</li>
+<li>Target 就是一个 Unit 组</li>
+<li>journalctl 统一管理内核和应用日志</li>
+</ul>
+<h1 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h1><ul>
+<li>命令模式(命令模式、插入模式、底线命令模式)</li>
+</ul>
+<h1 id="Iptables应用"><a href="#Iptables应用" class="headerlink" title="Iptables应用"></a>Iptables应用</h1><ul>
+<li>可以检测、修改、转发、重定向和丢弃 IPv4 数据包</li>
+</ul>
+<h1 id="oh-my-zsh-应用"><a href="#oh-my-zsh-应用" class="headerlink" title="oh-my-zsh 应用"></a>oh-my-zsh 应用</h1><h1 id="Nexus"><a href="#Nexus" class="headerlink" title="Nexus"></a>Nexus</h1><ul>
+<li>Maven 仓库管理器用于搭建私服</li>
+</ul>
+<h1 id="Gitlab"><a href="#Gitlab" class="headerlink" title="Gitlab"></a>Gitlab</h1><ul>
+<li>自托管的 Git 代码托管平台</li>
+</ul>
+<h1 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h1><ul>
+<li>CI&#x2F;CD持续集成，持续交付工具</li>
+</ul>
+<h1 id="Svn"><a href="#Svn" class="headerlink" title="Svn"></a>Svn</h1><ul>
+<li>类似git</li>
+</ul>
+<h1 id="YApi"><a href="#YApi" class="headerlink" title="YApi"></a>YApi</h1><ul>
+<li>API接口管理</li>
+</ul>
+<h1 id="Elastic-技术栈"><a href="#Elastic-技术栈" class="headerlink" title="Elastic 技术栈"></a>Elastic 技术栈</h1><ul>
+<li>ElasticSearch (opens new window)是一个基于 Lucene (opens new window)构建的开源，分布式，RESTful 搜索引擎。</li>
+<li>Logstash (opens new window)传输和处理你的日志、事务或其他数据。</li>
+<li>Kibana(opens new window)将 Elasticsearch 的数据分析并渲染为可视化的报表。</li>
+</ul>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">以上是 ELK 技术栈的一个架构图。从图中可以清楚的看到数据流向。</span><br><span class="line">Beats(opens new window)是单一用途的数据传输平台，它可以将多台机器的数据发送到 Logstash 或 ElasticSearch。但 Beats 并不是不可或缺的一环，所以本文中暂不介绍。</span><br><span class="line">Logstash(opens new window)是一个动态数据收集管道。支持以 TCP/UDP/HTTP 多种方式收集数据（也可以接受 Beats 传输来的数据），并对数据做进一步丰富或提取字段处理。</span><br><span class="line">ElasticSearch(opens new window)是一个基于 JSON 的分布式的搜索和分析引擎。作为 ELK 的核心，它集中存储数据。</span><br><span class="line">Kibana(opens new window)是 ELK 的用户界面。它将收集的数据进行可视化展示（各种报表、图形化数据），并提供配置、管理 ELK 的界面。</span><br></pre></td></tr></table></figure>
+
+<h1 id="RocketMQ"><a href="#RocketMQ" class="headerlink" title="RocketMQ"></a>RocketMQ</h1><ul>
+<li>MQ消息队列类似kafka</li>
+</ul>
+<h1 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a>Nacos</h1><ul>
+<li>发现、配置和管理微服务的软件(注册中心，配置中心)</li>
+</ul>
+<h1 id="概念介绍"><a href="#概念介绍" class="headerlink" title="概念介绍"></a>概念介绍</h1><p><a href="https://www.bilibili.com/video/BV1oCwEeVEe4/?spm_id_from=333.788.videopod.sections&vd_source=4878313de5c2fd6a940f45e90798e004">https://www.bilibili.com/video/BV1oCwEeVEe4/?spm_id_from=333.788.videopod.sections&amp;vd_source=4878313de5c2fd6a940f45e90798e004</a></p>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><p>远程缓存服务(单线程多个sock),加入异步子进程将其持久化到.rdb，传输使用tcp协议。主从模式：主负责读写，从负责读。Keepalived粗糙检测Redis是否存活选择新的主节点。或者使用哨兵节点Sentinel或哨兵集群；哈希槽切分数据；重定向不同的哈希槽信息</p>
+<h2 id="sendfile与mmap-RocketMQ与kafka性能区别"><a href="#sendfile与mmap-RocketMQ与kafka性能区别" class="headerlink" title="sendfile与mmap[RocketMQ与kafka性能区别]"></a>sendfile与mmap[RocketMQ与kafka性能区别]</h2><p>正常的发送过程：磁盘到内核到用户到内核socket缓冲区到网卡[read, write]；mmap：磁盘到内核到内核socket缓冲区到网卡，用户空间直接映射的内核缓冲区[mmap, write]；sendfile:从磁盘到内核到网卡[ sendfile ]</p>
+<h2 id="Elastic-Search"><a href="#Elastic-Search" class="headerlink" title="Elastic Search"></a>Elastic Search</h2><p>Lucene:{将文本拆分为词项，然后存储包含此词项[ term dictiongry ]的文本索引[ Posting list ]，具体文本保存在[ Stored Fields ]，通过二分查找和树的查找进行优化。Doc Values[ 用于存储特定的索引 ]。segment:[ Inverted Index, Term Index, Stored Fields, Doc Values ]一但生成则不能修改，不定期合并小的segment,读的时候并行的读多个}。根据内容分类设置多个Lucene通过Shard进行区分，内部拆分成多个Shard(独立Lucene库)Shard的优化生成副Shard。涉及到管理的不同节点[ 集群管理， 存储数据,处理请求 ]。使用Raft(一致性算法)进行通信</p>
+<h2 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h2><p>将q分类成不同的topic,一个topic被拆分成几个Partition，partition被放置到broker上，一个broker中可以有多个partition。为了高可用将partition进行备份，主负责业务，从负责备份。为了持久化将信息保存到磁盘并添加retention policy数据保留策略。为了让消费者从partition中间进行处理对消费者进行分组分别维护自己的消费进度并设置offset定位。使用zookeeper(分布式协调服务)维护集群，后面支持使用Raft</p>
+<h2 id="RocketMQ-1"><a href="#RocketMQ-1" class="headerlink" title="RocketMQ"></a>RocketMQ</h2><p>将Kafka中的zookeeper替换为Nameserver，RocketMQ的Q只存储摘要信息，具体信息保存到commitLog，修改以Broker为单位进行备份。通过tag标记Q中的消息。原始支持延时队列，原始支持死信队列(重试多次失败)。除了支持offset还支持调整时间</p>
+<h2 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ:"></a>RabbitMQ:</h2><p>是一个消息队列，使用不同的优先级，Exchange进行路由，支持集群，Exchange进行同步，Queue进行镜像拷贝(具备主从关系)，基于Erlang进行的数据同步，更靠谱的Raft算法进行选举主Queue</p>
+<h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><p>只是保存操作系统的用户空间和文件系统以及依赖库。<br>Docker Compose解决的是一整套服务，Docker Swarm解决的是一整套服务在多个服务器上的部署。VPS(服务器上的虚拟机，不能随时调整资源)ECS是可以动态调整的版本</p>
+<h2 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h2><p>切分，容错。NameNode[ Namespace文件树,Block Mgr具体文件块 ],DataNode。NameNode的持久化和备份</p>
+<h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><p>正向代理(代理浏览器)，反向代理(代理客户端)，网关开放的接口(单线程)而是使用多进程，并且设置一个共享内存，磁盘缓存相应数据。work进行滚动升级使用master进行管理配置</p>
+<h2 id="hadoop"><a href="#hadoop" class="headerlink" title="hadoop"></a>hadoop</h2><p>hdfs存储,mapreduce计算,yarn资源管理(将map封装成jvm容器)，Hive查询，spark使用内存进行加速mapreduce，Flink在线的数据处理，高并发hbase分布式数据库</p>
+<h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><p>存储格式.idb,并将一个表进行分页，通过将每页的第一个主键收集成层级快速查找【并由一个更多策略的buffer pool替代文件缓存】，自适应哈希索引优化热点读性能，change_buffer:辅助索引页先进pool后面再机会的使用磁盘的索引页，Undo_log负责记录写操作，Redo_log_Buffer WAL:对于原子性的操作单独顺序记录到磁盘防止进程崩溃，这些buffer使用Innodb数据引擎管理通过server层提供sql语句支持，server层包括连接管理sql分析规则优化</p>
+<h2 id="mysql的速度优化"><a href="#mysql的速度优化" class="headerlink" title="mysql的速度优化"></a>mysql的速度优化</h2><p>使用更大的连接池，增大Buffer Pool</p>
+<h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h2><p>Document替换列，id替换主键。.wt文件；写时复制[ 单独创建节点写然后替换原来的节点 ]  “没看完”</p>
+<h2 id="PostgreSQL"><a href="#PostgreSQL" class="headerlink" title="PostgreSQL"></a>PostgreSQL</h2><p>支持各种各样的索引的扩展[ B-Link(数字文本),GIN(文本|Json),地理位置(GIST),时序数据(BRIN) ]  “没看完”</p>
+]]></content>
+      <tags>
+        <tag>运维something</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>fastapi</title>
+    <url>/TestHexo/2026/03/29/fastapi/</url>
+    <content><![CDATA[<p>fastAPI基础概念</p>
+<span id="more"></span>
+<ol>
+<li>flask基础是并发</li>
+</ol>
+<ul>
+<li>并发与并行的区别，并发是接受端，并行是处理端</li>
+<li>async函数必须搭配await函数使用</li>
+<li>Pydantic是数据校验，严格的输出格式限制</li>
+<li>OpenAPI生成api文档</li>
+</ul>
+<ol start="2">
+<li>路径参数[类型转换]</li>
+</ol>
+<ul>
+<li>不同路径节点顺序有意义</li>
+</ul>
+<ol start="3">
+<li>查询参数</li>
+</ol>
+<ul>
+<li>可选和默认值的设置，设置必选[没有None]</li>
+</ul>
+<ol start="4">
+<li>请求体</li>
+</ol>
+<ul>
+<li>pydantic的BaseModel用于接收请求体</li>
+</ul>
+<ol start="5">
+<li>查询参数的Annotated验证</li>
+</ol>
+<ul>
+<li><code>q: Annotated[str | None, Query(max_length=50)] = None</code>,这里q为变量名，类型为str或None,来源和要求为Query,默认值为None。<ul>
+<li>别名</li>
+<li>弃用标识</li>
+<li>示例</li>
+<li>排除在OpenAPI界面中</li>
+<li>正则与大小验证</li>
+<li>模型是可以嵌套的</li>
+<li>BaseModel作为类型<ul>
+<li>model_config &#x3D; {“extra”: “forbid”}禁止额外的参数</li>
+<li>.model_dump()从pydantic中返回属性的dict</li>
+</ul>
+</li>
+<li>Field在BaseModel中进行验证</li>
+<li>Query &#x2F; Path &#x2F; Cookie &#x2F; Header &#x2F; Form元数据定义</li>
+<li>AfterValidator逻辑校验器</li>
+<li>Depends依赖注入</li>
+<li>Body()请求体<br>  embed&#x3D;True则期望输入有一个嵌套层json</li>
+<li>-&gt;Item vs response_model自动剔除模型中未定义的私密字段<ul>
+<li>通过继承的方法返回不同的子类</li>
+<li>可以设置默认值</li>
+<li>response_model_exclude_unset&#x3D;True</li>
+<li>response_model_include 和 response_model_exclude 返回属性的白名单和黑名单</li>
+</ul>
+</li>
+<li>status_code用于指定返回状态代码[1信息，2正常，3重定向，4客户端错误，5服务器错误]</li>
+<li>表单数据和query解析方式不同</li>
+<li>File只是保存在内存，UploadFile保存到内存和磁盘</li>
+<li>raise HTTPException触发一个错误</li>
+<li>@app.exception_handler用于覆盖错误响应</li>
+<li>路径操作配置除了可以设置[返回类型，返回属性的白黑名单还可以tag,说明和总结与弃用说明]</li>
+<li>yield作为迭代器，数据库连接池有用</li>
+<li>Depends依赖注入，定义一个数据处理&#x2F;生成方案</li>
+<li>OAuth2安全性: Annotated[OAuth2PasswordRequestForm, Depends()]<ul>
+<li>oauth2_scheme &#x3D; OAuth2PasswordBearer(tokenUrl&#x3D;”token”)  Annotated[str, Depends(oauth2_scheme)]密码流的实现</li>
+</ul>
+</li>
+<li>@app.middleware(“http”)中间件</li>
+<li>设置CORS跨域策略app.add_middleware()</li>
+<li>SQLModel类似于BaseModel创建数据库的模型<ul>
+<li>create_engine(sqlite_url, connect_args&#x3D;connect_args)创建数据库引擎</li>
+</ul>
+</li>
+<li>后台任务background_tasks: BackgroundTasks  background_tasks.add_task()</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>fastapi</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>求个OC</title>
+    <url>/TestHexo/2026/03/30/hello-world/</url>
+    <content><![CDATA[<p>投递岗位：</p>
+<span id="more"></span>
+<ol>
+<li>字节CQC大模型运营</li>
+<li>作业帮视觉算法</li>
+<li>小红书产品全栈</li>
+<li>京东技术运维</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>kubernetes</title>
+    <url>/TestHexo/2026/03/29/kubernetes/</url>
+    <content><![CDATA[<img data-src="/TestHexo/2026/03/29/kubernetes/1774798972048.png" class="" title="k8s整体架构图">
+
+<span id="more"></span>
+<p>资源对象：<br>node(内部ip地址)</p>
+<ul>
+<li>pod(最小调度单元，对容器的封装)</li>
+<li>service(将一组pod封装成服务，可以跨node)</li>
+<li>ingress(集群外部访问集群内部服务,可配置域名，负载均衡，ssl证书)</li>
+<li>configmap(明文，配置信息和镜像内容分离)</li>
+<li>secret(敏感信息)</li>
+<li>volumes(持久化资源挂载到外部)</li>
+<li>deploy(管理pod的副本数量，和更新)</li>
+<li>statefulSet(deploy管理不了有状态的pod，增加持久化保证)</li>
+</ul>
+<p>架构：</p>
+<ol>
+<li>Work_Node包含的组件：</li>
+</ol>
+<ul>
+<li>kubelet(管理监控节点的pod)</li>
+<li>kube-proxy(网络和负载均衡，代理)</li>
+<li>container-runtime(具体运行时)<ul>
+<li>containerd&#x2F;Docker-Engine&#x2F;CRI-O<br>Master_Node</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>Control_plane包含的组件：</li>
+</ol>
+<ul>
+<li>API server(通信所有组件，kubectl连接它，集群资源对象的认证访问控制)</li>
+<li>sched(调度器)</li>
+<li>Controller Manager(监控各种资源状态)</li>
+<li>etcd(键值存储系统)</li>
+</ul>
+<p>Ingress：</p>
+<ul>
+<li>将一组Control和Work部署为一个集群，通过Ingress控制器作为入口控制器<br>Kubectl:</li>
+<li>将命令转换为K8s的API</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>快速入门</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>pytest</title>
+    <url>/TestHexo/2026/03/29/pytest/</url>
+    <content><![CDATA[<p>pytest还没学</p>
+<span id="more"></span>
+<p>pytest用例</p>
+<ul>
+<li>pytest.raises(SystemExit)检测指定异常</li>
+<li>pytest.approx(0.3)模糊等于</li>
+<li>各种测试命令指定测试范围[类，函数，类函数，装饰器，文件中]</li>
+<li>测试完成使用pytest筛选文档</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>pytest</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>qwen3_int4_gptq</title>
+    <url>/TestHexo/2026/03/29/qwen3_int4_gptq/</url>
+    <content><![CDATA[<p>1.参考文档：<br><a href="https://huggingface.co/onnx-community/Qwen3.5-0.6B-ONNX-INT4-CPU">https://huggingface.co/onnx-community/Qwen3.5-0.6B-ONNX-INT4-CPU</a></p>
+<span id="more"></span>
+<p>使用工具：</p>
+<ul>
+<li>CMake3.31+</li>
+<li>Transformer 4.51</li>
+<li>Olive</li>
+<li>ONNXRuntime Genai</li>
+</ul>
+<p>配置过程：</p>
+<ol>
+<li>清除代理<code>$env:HTTP_PROXY=&quot;&quot;, $env:HTTPS_PROXY=&quot;&quot;</code></li>
+<li>pip安装pysocks</li>
+<li>设置代理<code>env:HTTP_PROXY=&quot;socks5://127.0.0.1:10808&quot;, env:HTTPS_PROXY=&quot;socks5://127.0.0.1:10808&quot;</code>(vray2N)</li>
+<li>编译并安装ONNXRuntime Genai</li>
+</ol>
+<p>下载模型：</p>
+<ul>
+<li>winget 安装 git-xet</li>
+<li>huggingface进行克隆</li>
+</ul>
+<p>!!!! onnxruntime genai现在还不支持Qwen3.5的框架<br>使用官方的方法<br>from modelscope import AutoModelForCausalLM, AutoTokenizer</p>
+]]></content>
+      <tags>
+        <tag>量化</tag>
+      </tags>
+  </entry>
+</search>
