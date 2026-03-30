@@ -798,7 +798,7 @@ note:
 tabs:
   transition:
     tabs: false
-    labels: false
+    labels: true
 
 # PDF tag
 # NexT will try to load pdf files natively, if failed, pdf.js will be used.
@@ -834,9 +834,9 @@ motion:
     # slideUpBigIn | slideDownBigIn | slideLeftBigIn | slideRightBigIn
     # perspectiveUpIn | perspectiveDownIn | perspectiveLeftIn | perspectiveRightIn
     post_block: fadeIn
-    post_header: slideDownIn
-    post_body: slideDownIn
-    coll_header: slideLeftIn
+    post_header: fadeIn
+    post_body: fadeIn
+    coll_header: fadeIn
     # Only for Pisces | Gemini.
     sidebar: slideUpIn
 
