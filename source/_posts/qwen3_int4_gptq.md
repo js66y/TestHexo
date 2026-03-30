@@ -4,10 +4,10 @@ date: 2026-03-30T10:00:14+08:00
 tags: 量化
 ---
 
-<!-- more -->
+
 1.参考文档：
 https://huggingface.co/onnx-community/Qwen3.5-0.6B-ONNX-INT4-CPU
-
+<!-- more -->
 使用工具：
 - CMake3.31+
 - Transformer 4.51

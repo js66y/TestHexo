@@ -4,6 +4,8 @@ date: 2026-03-30T10:10:15+08:00
 tags: 运维something
 ---
 
+接下来运维很有用...
+<!-- more -->
 # linux命令
 #### 助信息
 - man ls(查看ls手册)
@@ -35,4 +37,15 @@ tags: 运维something
 #### Linux 软件管理
 - rpm, yum, apt-get
 
-# linux命令
+# linux自动化脚本
+- /etc/rc.local(添加脚本)
+- /etc/rc.d/init.d(对应启动级别的放置脚本)
+
+# Samba应用
+- 安装配置samba
+- 用于实现linux和windows的文件共享
+- linux真实存在的用户，为其添加smb的密码
+- 启动服务，添加防火墙规则
+
+# NTP应用(OSI 应用层)
+- 网络时间协议
