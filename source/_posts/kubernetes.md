@@ -20,7 +20,7 @@ node(内部ip地址)
 
 架构：
 1. Work_Node包含的组件：
-- kubelet(管理节点的pod)
+- kubelet(管理监控节点的pod)
 - kube-proxy(网络和负载均衡，代理)
 - container-runtime(具体运行时)
   - containerd/Docker-Engine/CRI-O
@@ -30,3 +30,8 @@ node(内部ip地址)
 - sched(调度器)
 - Controller Manager(监控各种资源状态)
 - etcd(键值存储系统)
+
+Ingress：
+- 将一组Control和Work部署为一个集群，通过Ingress控制器作为入口控制器
+Kubectl:
+- 将命令转换为K8s的API
