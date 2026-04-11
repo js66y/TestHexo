@@ -157,6 +157,7 @@ Lucene:{将文本拆分为词项，然后存储包含此词项[ term dictiongry 
 ## Docker
 只是保存操作系统的用户空间和文件系统以及依赖库。
 Docker Compose解决的是一整套服务，Docker Swarm解决的是一整套服务在多个服务器上的部署。VPS(服务器上的虚拟机，不能随时调整资源)ECS是可以动态调整的版本
+Docker File根据文件变化来区分不同层的，变化最少的向上放
 ## HDFS
 切分，容错。NameNode[ Namespace文件树,Block Mgr具体文件块 ],DataNode。NameNode的持久化和备份
 ## Nginx

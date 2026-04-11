@@ -33,5 +33,6 @@ node(内部ip地址)
 
 Ingress：
 - 将一组Control和Work部署为一个集群，通过Ingress控制器作为入口控制器
+
 Kubectl:
 - 将命令转换为K8s的API
